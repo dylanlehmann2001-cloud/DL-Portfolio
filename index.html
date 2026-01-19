@@ -401,9 +401,18 @@ main, main > * {
     <div class="vertical-divider"></div>
 
     <!-- Timeline Expériences -->
+
     <div class="timeline-column">
       <h3 class="timeline-title">Expériences</h3>
       <div class="timeline-line"></div>
+
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div class="timeline-content">
+          <h4>Stagiaire graphiste - Vétroz</h4>
+          <p>2026</p>
+        </div>
+      </div>
 
       <div class="timeline-item">
         <span class="timeline-dot"></span>
@@ -769,14 +778,8 @@ main, main > * {
 
 <!-- FOOTER -->
 <footer>
-  <div>Dylan Lehmann — Portfolio © 2025</div>
+  <div>Dylan Lehmann — Portfolio © 2026</div>
   <div class="socials">
-    <a aria-label="instagram" href="https://www.instagram.com/dyl.lhnn/?hl=fr" target="_blank" rel="noopener noreferrer">
-      <img src="icons/instagram.svg" width="24" height="24" alt="instagram">
-    </a>
-    <a aria-label="facebook" href="https://www.facebook.com/profile.php?id=100005656549286&locale=fr_FR" target="_blank" rel="noopener noreferrer">
-      <img src="icons/Facebook.svg" width="24" height="24" alt="facebook">
-    </a>
     <a aria-label="linkedin" href="https://www.linkedin.com/in/dylan-lehmann-709825398/" target="_blank" rel="noopener noreferrer">
       <img src="icons/LinkdIn.svg" width="24" height="24" alt="linkedin">
     </a>
@@ -977,39 +980,57 @@ document.querySelectorAll('.projCard').forEach(card => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  
+
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
   const closeBtn = document.querySelector(".lightboxClose");
+  const prevBtn = document.getElementById("prevImg");
+  const nextBtn = document.getElementById("nextImg");
 
   // Sélectionne toutes les images des pages projets
-  const imgs = document.querySelectorAll(".projectPageInner img");
-
+  const imgs = Array.from(document.querySelectorAll(".projectPageInner img"));
+  let currentIndex = 0;
   let scale = 1;
 
-  imgs.forEach(img => {
-    img.addEventListener("click", () => {
-      lightboxImg.src = img.src;
-      scale = 1;
-      lightboxImg.style.transform = `scale(${scale})`;
-      lightbox.classList.add("active");
-    });
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImg.src = imgs[currentIndex].src;
+    scale = 1;
+    lightboxImg.style.transform = `scale(${scale})`;
+    lightbox.classList.add("active");
+  }
+
+  function showPrev() {
+    if (currentIndex > 0) openLightbox(currentIndex - 1);
+  }
+
+  function showNext() {
+    if (currentIndex < imgs.length - 1) openLightbox(currentIndex + 1);
+  }
+
+  // click sur une image ouvre lightbox
+  imgs.forEach((img, index) => {
+    img.addEventListener("click", () => openLightbox(index));
   });
 
-  // Fermeture lightbox
-  closeBtn.addEventListener("click", () => {
-    lightbox.classList.remove("active");
+  // Fermeture
+  closeBtn.addEventListener("click", () => lightbox.classList.remove("active"));
+  lightbox.addEventListener("click", e => { if (e.target === lightbox) lightbox.classList.remove("active"); });
+
+  // Navigation via boutons
+  prevBtn.addEventListener("click", showPrev);
+  nextBtn.addEventListener("click", showNext);
+
+  // Navigation via flèches clavier
+  document.addEventListener("keydown", e => {
+    if (!lightbox.classList.contains("active")) return;
+    if (e.key === "ArrowLeft") showPrev();
+    if (e.key === "ArrowRight") showNext();
+    if (e.key === "Escape") lightbox.classList.remove("active");
   });
 
-  // Fermer en cliquant à l’extérieur
-  lightbox.addEventListener("click", (e) => {
-    if (e.target === lightbox) {
-      lightbox.classList.remove("active");
-    }
-  });
-
-  // Zoom molette
-  lightboxImg.addEventListener("wheel", (e) => {
+  // Zoom avec molette
+  lightboxImg.addEventListener("wheel", e => {
     e.preventDefault();
     if (e.deltaY < 0) scale += 0.1;
     else if (e.deltaY > 0 && scale > 0.2) scale -= 0.1;
@@ -1020,15 +1041,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
   </script>
 
 <!-- LIGHTBOX -->
+<!-- LIGHTBOX CAROUSEL -->
 <div id="lightbox" class="lightboxOverlay">
   <span class="lightboxClose">×</span>
   <img id="lightboxImg" class="lightboxImage" src="" alt="">
+  <!-- Navigation -->
+  <button id="prevImg" style="position:absolute;left:24px;top:50%;transform:translateY(-50%);font-size:36px;color:white;background:none;border:none;cursor:pointer;">‹</button>
+  <button id="nextImg" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:36px;color:white;background:none;border:none;cursor:pointer;">›</button>
 </div>
+
 </body>
 </html>
+
 
 
 
