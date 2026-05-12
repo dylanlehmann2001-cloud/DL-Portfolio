@@ -319,6 +319,418 @@ main, main > * {
   box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 
+/* =========================================================
+   RESPONSIVE TABLETTE
+   ========================================================= */
+@media (max-width: 1024px){
+
+  header{
+    width:calc(100% - 20px);
+    top:12px;
+  }
+
+  nav.mainNav{
+    gap:12px;
+    padding:10px 14px;
+    flex-wrap:wrap;
+    justify-content:center;
+    backdrop-filter:blur(12px);
+    background:rgba(15,15,16,.65);
+  }
+
+  nav.mainNav a{
+    font-size:18px;
+    padding:8px 10px;
+  }
+
+  .marquee{
+    margin-top:110px;
+    height:42px;
+  }
+
+  .marqueeInner{
+    font-size:26px;
+  }
+
+  .page{
+    padding:24px;
+    height:auto;
+    min-height:calc(100vh - 140px);
+  }
+
+  .pageInner{
+    padding-right:0;
+  }
+
+  .card{
+    padding:22px;
+  }
+
+  h1.title{
+    font-size:34px;
+    line-height:1.1;
+  }
+
+  h2.section{
+    font-size:22px;
+  }
+
+  p.lead{
+    font-size:18px;
+    line-height:1.25;
+  }
+
+  /* HERO */
+  .hero{
+    flex-direction:column;
+    align-items:center !important;
+    text-align:center;
+  }
+
+  #userImage{
+    width:100% !important;
+    height:auto !important;
+    max-height:260px;
+  }
+
+  .heroText{
+    text-align:center !important;
+  }
+
+  /* TIMELINES */
+  .timelines-container{
+    flex-direction:column;
+    gap:30px;
+  }
+
+  .timeline-column{
+    width:100%;
+  }
+
+  .vertical-divider{
+    display:none;
+  }
+
+  .timeline-line{
+    left:14px;
+  }
+
+  .timeline-item{
+    padding-left:40px;
+  }
+
+  /* PROJECTS */
+  .projectsLayout{
+    flex-direction:column;
+  }
+
+  .projectsNav{
+    width:100%;
+    display:flex !important;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+  }
+
+  .gallery{
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  }
+
+  .projCard img{
+    height:180px;
+  }
+
+  /* PROJECT PAGE */
+  .projectPageInner{
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  }
+
+  /* FOOTER */
+  footer{
+    font-size:16px;
+    flex-direction:column;
+    gap:6px;
+    text-align:center;
+  }
+
+  /* SCROLLBAR */
+  .scrollbar{
+    right:6px;
+    width:12px;
+  }
+
+  .scrollbar .track{
+    width:6px;
+  }
+
+  .scrollbar .thumb{
+    height:60px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE MOBILE
+   ========================================================= */
+@media (max-width: 768px){
+
+  body{
+    overflow-x:hidden;
+  }
+
+  header{
+    top:8px;
+    width:calc(100% - 10px);
+  }
+
+  nav.mainNav{
+    width:100%;
+    border-radius:18px;
+    gap:6px;
+    padding:10px;
+  }
+
+  nav.mainNav a{
+    font-size:15px;
+    padding:6px 8px;
+  }
+
+  .marquee{
+    margin-top:130px;
+    height:34px;
+  }
+
+  .marqueeInner{
+    font-size:18px;
+    letter-spacing:1px;
+  }
+
+  main.viewer{
+    padding-top:10px;
+  }
+
+  .page{
+    padding:14px;
+    min-height:auto;
+  }
+
+  .card{
+    padding:16px;
+    border-radius:12px;
+  }
+
+  h1.title{
+    font-size:26px;
+  }
+
+  h2.section{
+    font-size:18px;
+  }
+
+  p.lead{
+    font-size:16px;
+    line-height:1.35;
+  }
+
+  /* HERO */
+  #userImage{
+    border-radius:10px;
+    max-height:180px;
+  }
+
+  .heroText{
+    min-width:100% !important;
+  }
+
+  /* BUTTONS */
+  .btn{
+    width:100%;
+    text-align:center;
+    font-size:18px;
+    padding:12px;
+  }
+
+  .btn.big{
+    width:100%;
+  }
+
+  /* SKILLS */
+  .skillsGrid{
+    grid-template-columns:1fr;
+  }
+
+  .skill{
+    padding:12px;
+  }
+
+  .skill .label{
+    font-size:18px;
+  }
+
+  /* PROJECTS */
+  .projectsNav{
+    justify-content:flex-start;
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    padding-bottom:8px;
+  }
+
+  .projectsNav::-webkit-scrollbar{
+    display:none;
+  }
+
+  .projectsNav a{
+    white-space:nowrap;
+    font-size:16px;
+    padding:8px 12px;
+    background:rgba(255,255,255,0.03);
+  }
+
+  .gallery{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .projCard{
+    max-width:100%;
+  }
+
+  .projCard img{
+    height:220px;
+  }
+
+  /* PROJECT DETAIL */
+  .projectPageInner{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  /* ABOUT IMAGE */
+  #page-3 img{
+    width:120px !important;
+    height:120px !important;
+  }
+
+  /* FORM */
+  form.contact{
+    gap:12px;
+  }
+
+  input[type=text],
+  input[type=email],
+  textarea{
+    font-size:16px;
+    padding:12px;
+  }
+
+  textarea{
+    min-height:140px;
+  }
+
+  /* TIMELINE */
+  .timeline-title{
+    font-size:1.6rem;
+  }
+
+  .timeline-content h4{
+    font-size:1.2rem;
+  }
+
+  .timeline-content p{
+    font-size:1rem;
+  }
+
+  .timeline-dot{
+    width:12px;
+    height:12px;
+    left:16px;
+  }
+
+  .timeline-line{
+    left:20px;
+    width:2px;
+  }
+
+  .timeline-item{
+    margin:28px 0;
+    padding-left:44px;
+  }
+
+  /* LIGHTBOX */
+  .lightboxImage{
+    max-width:95%;
+    max-height:75%;
+  }
+
+  .lightboxClose{
+    top:10px;
+    right:16px;
+    font-size:34px;
+  }
+
+  #prevImg,
+  #nextImg{
+    font-size:28px !important;
+  }
+
+  /* FOOTER */
+  footer{
+    position:relative;
+    margin-top:20px;
+    padding-bottom:20px;
+    font-size:14px;
+  }
+
+  /* CURSOR */
+  .cursor{
+    display:none;
+  }
+
+  /* SCROLLBAR */
+  .scrollbar{
+    display:none;
+  }
+}
+
+/* =========================================================
+   PETITS SMARTPHONES
+   ========================================================= */
+@media (max-width: 480px){
+
+  nav.mainNav a{
+    font-size:13px;
+    padding:5px 6px;
+  }
+
+  h1.title{
+    font-size:22px;
+  }
+
+  p.lead{
+    font-size:15px;
+  }
+
+  .projCard img{
+    height:180px;
+  }
+
+  .marquee{
+    margin-top:120px;
+  }
+
+  .marqueeInner{
+    font-size:15px;
+  }
+
+  .btn{
+    font-size:16px;
+  }
+
+  .timeline-title{
+    font-size:1.4rem;
+  }
+}
+
 
 
   </style>
